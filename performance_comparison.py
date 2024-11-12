@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -8,8 +7,68 @@ from plotly.subplots import make_subplots
 # Set page config
 st.set_page_config(page_title="One Punch Code Performance", layout="wide")
 
+# Custom CSS for One Punch Man theme
+st.markdown("""
+    <style>
+        /* Page Background */
+        body {
+            background-color: #F8F8F8;
+        }
+        
+        /* Title and header */
+        .title {
+            color: #FF6F61; /* Heroic red */
+            font-weight: bold;
+            font-size: 36px;
+        }
+
+        .header {
+            color: #FF9B9B; /* Light red for headers */
+        }
+
+        /* Sidebar */
+        .sidebar .sidebar-content {
+            background-color: #3E3E3E;
+            color: white;
+        }
+        
+        .sidebar .sidebar-header {
+            color: #FF6F61; /* Heroic red for sidebar header */
+        }
+        
+        /* Metrics */
+        .stMetricValue {
+            color: #4CAF50; /* Green for positive improvements */
+        }
+
+        /* Button and Highlights */
+        .stButton>button {
+            background-color: #FF6F61;  /* Red button */
+            color: white;
+            font-weight: bold;
+        }
+
+        .stButton>button:hover {
+            background-color: #FF3D2A;  /* Darker red on hover */
+        }
+
+        /* Plotly colors */
+        .plotly-graph-div {
+            background-color: #FFFFFF;  /* Light background for charts */
+        }
+
+        .st-expanderHeader {
+            color: #FF6F61;  /* Red for expanders */
+        }
+
+        .st-expanderContent {
+            color: #4CAF50;  /* Green text inside expanders */
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 # Title and introduction
-st.title("💥 One Punch Code Performance Analysis: Original vs Optimized Version")
+st.markdown('<p class="title">💥 One Punch Code Performance Analysis: Original vs Optimized Version</p>', unsafe_allow_html=True)
 st.markdown("""
 Welcome to the **One Punch** code performance analysis! 🚀 Here, you'll witness how the optimized code obliterates inefficiencies with a single punch, leaving the original version trembling.
 Select different metrics and scenarios to explore how the **Optimized Code** effortlessly crushes the competition.
@@ -18,7 +77,6 @@ Select different metrics and scenarios to explore how the **Optimized Code** eff
 # Sample data
 @st.cache_data
 def load_performance_data():
-    # Processing time data for different scenarios
     time_data = pd.DataFrame({
         'Scenario': ['Small (1 file)', 'Medium (5 files)', 'Large (10 files)'] * 2,
         'Version': ['Original', 'Original', 'Original', 'Optimized', 'Optimized', 'Optimized'],
