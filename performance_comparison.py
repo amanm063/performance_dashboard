@@ -194,27 +194,6 @@ with col3:
     - Modular code design that adapts to any battle!
     """)
 
-# Technical details in expander
-with st.expander("🔧 Technical Implementation Details - Secrets of the Hero"):
-    st.code("""
-# Key optimization examples:
-
-# 1. Concurrent Processing - Like a thousand punches at once
-with concurrent.futures.ThreadPoolExecutor() as executor:
-    validation_results = list(executor.map(
-        lambda f: validate_single_file(f, files_config), 
-        uploaded_files
-    ))
-
-# 2. Caching - Efficient and quick, like Saitama's one punch
-@st.cache_resource
-def init_snowflake_connection():
-    return refresh_snowflake_connection(logger, ENV, APP_TYPE, APP_NAME)
-
-# 3. Efficient File Parsing - Punching through large files
-def parse_file_headers(file):
-    return pd.read_csv(file, nrows=0).columns.tolist()
-    """)
 
 # Methodology expander
 with st.expander("📚 Methodology - The Hero's Strategy"):
